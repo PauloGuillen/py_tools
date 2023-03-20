@@ -1,0 +1,29 @@
+nome : aplicativo Python
+
+em :
+  pull_request :
+  empurre :
+    ramos :
+      - mestre
+
+trabalhos :
+  construir :
+    ambiente :
+      PIPENV_NO_INHERIT : 1
+      PIPENV_IGNORE_VIRTUALENVS : 1
+    run-on : ubuntu-latest
+
+    serviços :
+
+    passos :
+      - usa : ações/checkout@v2
+      - nome : configurar o Python 3.10
+        usa : ações/setup-python@v4
+        com :
+          versão python : ' 3.10 '
+      - nome : Instalar dependências
+        executar : |
+          pip install -r requisitos-dev.txt
+      - nome : Lint com flake8
+        executar : |
+          pipenv executar flake8 .
