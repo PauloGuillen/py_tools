@@ -8,5 +8,12 @@ def buscar_avatar(usuario):
     resposta = requests.get(url)
     return resposta.json()['avatar_url']
 
+
+
+xxxxx
+
+
+
+
 if __name__ == '__main__':
     print(buscar_avatar('renzon'))
