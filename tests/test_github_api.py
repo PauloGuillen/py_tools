@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock
-from py_tools import github_api
+from py_tools.src import github_api
 
 
 @pytest.fixture
@@ -11,7 +11,7 @@ def avatar_url(mocker):
         'login': 'renzo',
         'avatar_url': url
     }
-    get_mock = mocker.patch('py_tools.github_api.requests.get')
+    get_mock = mocker.patch('py_tools.src.github_api.requests.get')
     get_mock.return_value = resp_mock
     return url
 
