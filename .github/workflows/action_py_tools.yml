@@ -21,11 +21,7 @@ jobs:
       - name: Install pytest
         run: |
           pip install pytest
-<<<<<<< HEAD
           pip install pytest-mock
-=======
-          pip install pytest
->>>>>>> 04c691370936e3345270d76634d04ad467370299
           pip install requests
       - name: Lint with flake8
         run: |
