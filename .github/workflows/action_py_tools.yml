@@ -28,7 +28,16 @@ jobs:
           pipenv run flake8 src spam tests
       - name: Test with pytest
         run: |
+<<<<<<< HEAD
           pipenv run pytest . --cov=.
       - name: Posting Coverage
         run: |
           pipenv run codecov
+=======
+          pipenv run pytest py_tools --cov=py_tools
+      - name: Posting Coverage
+        run: |
+          pipenv run codecov
+
+
+>>>>>>> 29c90f10d479c8fecfd6440a23e30d160ef55f76
