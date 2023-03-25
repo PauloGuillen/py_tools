@@ -1,4 +1,4 @@
-name: Py tools - verificações com o Flake8
+name: Py tools
 
 on:
   pull_request:
@@ -8,24 +8,29 @@ on:
 
 jobs:
   build:
+    env:
+      PIPENV_NO_INHERIT: 1
+      PIPENV_IGNORE_VIRTUALENVS: 1
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Configuração de Python 3.10
         uses: actions/setup-python@v1
         with:
           python-version: '3.10'
-      - name: Install flake8
+      - name: Install dependencies
         run: |
-          pip install flake8
-      - name: Install pytest
-        run: |
-          pip install pytest
-          pip install pytest-mock
-          pip install requests
+          pip install pipenv
+          pipenv sync --dev
       - name: Lint with flake8
         run: |
-          flake8 .
-      - name: Verificacoes com pytest
+          pipenv run flake8 src spam tests
+      - name: Test with pytest
         run: |
-          pytest tests/
+          pipenv run pytest py_tools --cov=py_tools
+      - name: Posting Coverage
+        run: |
+          pipenv run codecov
+
+
